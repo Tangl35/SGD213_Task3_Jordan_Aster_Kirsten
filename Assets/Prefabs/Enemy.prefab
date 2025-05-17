@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 274525380844625861}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2cb38cee55da448488b69e6298d9a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  stateMachine: {fileID: 0}
+  viewAngle: 120
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  playerSpotted: 0
 --- !u!114 &1357338511497176228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c67b30f42744e52be6da138b2ebccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  patrolPoints: []
+  currentPatrolIndex: 0
 --- !u!114 &274525380844625861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ef03ff7b659407b93ee21c93b2f8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  fovTrigger: {fileID: 0}
 --- !u!1 &4488778643936745108
 GameObject:
   m_ObjectHideFlags: 0
