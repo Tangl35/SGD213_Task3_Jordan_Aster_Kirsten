@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBaseState : MonoBehaviour
+/// <summary>
+/// Enemy Base State works with IdleState, PatrolState, ChaseState and DeathState for EnemyAI controller.
+/// </summary>
+public abstract class EnemyBaseState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void EnterState(EnemyStateMachine stateMachine);
+    public abstract void UpdateState(EnemyStateMachine stateMachine);
+    public abstract void ExitState(EnemyStateMachine stateMachine);
 }

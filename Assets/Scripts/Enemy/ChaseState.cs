@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseState : MonoBehaviour
+public class ChaseState : EnemyBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState(EnemyStateMachine stateMachine)
     {
-        
+        Debug.Log("Chasing player");
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateState(EnemyStateMachine stateMachine)
     {
-        
+        if (!stateMachine.fovTrigger.playerSpotted)
+        {
+            stateMachine.SwitchState(new IdleState()); // Or return to patrol immediately
+            return;
+        }
+
+        stateMachine.movement.MoveTo(stateMachine.fovTrigger.player.position);
+    }
+
+    public override void ExitState(EnemyStateMachine stateMachine)
+    {
+        stateMachine.movement.StopMoving();
     }
 }
