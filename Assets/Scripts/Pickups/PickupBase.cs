@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+
 
 public class PickupBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int pickupValue = 1;
+
+    public virtual void OnTriggerEnter(Collider other)
     {
-        
+        // Check if player collided with pickup.
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        ApplyPickup(other.gameObject);
+
+        // Return to object pool instead of destroying
+        PooledObject.Instance.ReturnToPool(gameObject);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void ApplyPickup(GameObject player)
     {
-        
+
     }
+  
 }

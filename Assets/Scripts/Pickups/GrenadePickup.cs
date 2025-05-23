@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrenadePickup : MonoBehaviour
+public class GrenadePickup : PickupBase
 {
-    // Start is called before the first frame update
-    void Start()
+    // Calls AddGrenades() function and increases grenade count up to maxGrenades.
+    public override void ApplyPickup(GameObject player)
     {
-        
-    }
+        WeaponManager weaponManager = player.GetComponent<WeaponManager>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (weaponManager != null)
+        {
+            weaponManager.AddGrenades(pickupValue);
+        }
     }
 }

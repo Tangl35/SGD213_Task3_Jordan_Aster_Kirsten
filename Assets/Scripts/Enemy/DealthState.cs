@@ -11,7 +11,7 @@ public class DealthState : EnemyBaseState
         stateMachine.movement.StopMoving();
         stateMachine.GetComponent<Collider>().enabled = false;
 
-        // Write code to return to object pool and potentially respwn new enemy??
+        // Write code to return to object pool and potentially respawn new enemy??
     }
 
     public override void UpdateState(EnemyStateMachine stateMachine)
@@ -21,6 +21,6 @@ public class DealthState : EnemyBaseState
 
     public override void ExitState(EnemyStateMachine stateMachine)
     {
-        
+        // Does not require an exit of state.
     }
 }

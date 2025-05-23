@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoPickup : MonoBehaviour
+public class AmmoPickup : PickupBase
 {
-    // Start is called before the first frame update
-    void Start()
+    // Calls Reload() in WeaponBase and increases ammo up to maxAmmo.
+    public override void ApplyPickup(GameObject player)
     {
-        
-    }
+        WeaponBase weapon = player.GetComponent<WeaponBase>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (weapon != null)
+        {
+            weapon.Reload(pickupValue);
+        }
     }
 }

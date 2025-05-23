@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
-public class HealthPickup : MonoBehaviour
+public class HealthPickup : PickupBase
 {
-    // Start is called before the first frame update
-    void Start()
+    // Calls Heal() in HealthBase and increases health up to maxHealth value.
+    public override void ApplyPickup(GameObject player)
     {
-        
-    }
+        HealthBase health = player.GetComponent<HealthBase>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (health != null)
+        {
+            health.Heal(pickupValue);
+        }
     }
 }
+

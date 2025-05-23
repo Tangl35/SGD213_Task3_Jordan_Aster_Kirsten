@@ -13,7 +13,7 @@ public class ChaseState : EnemyBaseState
     {
         if (!stateMachine.fovTrigger.playerSpotted)
         {
-            stateMachine.SwitchState(new IdleState()); // Or return to patrol immediately
+            stateMachine.SwitchState(gameObject.AddComponent<IdleState>()); // Or return to patrol immediately
             return;
         }
 

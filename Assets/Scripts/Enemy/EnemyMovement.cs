@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public NavMeshAgent enemy;
 
     // Array of waypoints the enemy will move between when patrolling.
     public Transform[] patrolPoints;
@@ -16,25 +16,31 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update.
     void Start()
     {
-        if (agent == null)
+        // Checks to see if enemy is on a valid NavMesh.
+        if (!enemy.isOnNavMesh)
         {
-            agent = GetComponent<NavMeshAgent>();
+            Debug.Log("Enemy is not on a valid NavMesh!");
+        }
+
+        if (enemy == null)
+        {
+            enemy = GetComponent<NavMeshAgent>();
         }
     }
 
     // Tells Nav Mesh to move enemy to a given position.
     public void MoveTo(Vector3 position)
     {
-        if (agent.destination != position)
+        if (enemy.destination != position)
         {
-            agent.SetDestination(position);
+            enemy.SetDestination(position);
         }
     }
 
     // Checks to see if enemy reached destination. Threshold defines how close is 'close enough'.
     public bool ReachedDestination(float threshold = 0.5f)
     {
-        return !agent.pathPending && agent.remainingDistance <= threshold;
+        return !enemy.pathPending && enemy.remainingDistance <= threshold;
     }
 
     // Returns the position of current control point.
@@ -52,6 +58,6 @@ public class EnemyMovement : MonoBehaviour
     // Stops enemy and clears current path.
     public void StopMoving()
     {
-        agent.ResetPath();
+        enemy.ResetPath();
     }
 }

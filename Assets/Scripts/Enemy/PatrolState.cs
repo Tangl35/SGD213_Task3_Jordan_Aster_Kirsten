@@ -21,6 +21,7 @@ public class PatrolState : EnemyBaseState
         stateMachine.movement.MoveTo(stateMachine.movement.GetCurrentPatrolPoint());
     }
 
+    // Checks to see if player has been spotted.
     public override void UpdateState(EnemyStateMachine stateMachine)
     {
         if (stateMachine.fovTrigger.playerSpotted)
@@ -55,6 +56,7 @@ public class PatrolState : EnemyBaseState
         }
     }
 
+    // Resets player alert values before exiting state.
     public override void ExitState(EnemyStateMachine stateMachine)
     {
         isAlerted = false;

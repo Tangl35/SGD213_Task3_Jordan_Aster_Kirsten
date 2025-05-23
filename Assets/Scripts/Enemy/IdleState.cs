@@ -22,9 +22,10 @@ public class IdleState : EnemyBaseState
         stateMachine.movement.StopMoving();
     }
 
+    // Checks to see if player has been spotted
     public override void UpdateState(EnemyStateMachine stateMachine)
     {
-        //
+        // Detect if player is spotted by enemy
         if (stateMachine.fovTrigger.playerSpotted)
         {
             if (!isAlerted)
@@ -66,6 +67,7 @@ public class IdleState : EnemyBaseState
         }
     }
 
+    // Resets player alert values before exiting state.
     public override void ExitState(EnemyStateMachine stateMachine)
     {
         isAlerted = false;
