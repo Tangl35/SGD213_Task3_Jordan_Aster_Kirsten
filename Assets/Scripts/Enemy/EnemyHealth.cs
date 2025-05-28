@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : HealthBase
 {
     private EnemyStateMachine stateMachine;
+    public EnemySpawner spawner;
 
     protected override void Start()
     {
@@ -22,6 +23,12 @@ public class EnemyHealth : HealthBase
 
     public override void Die()
     {
+        // Let spawner no enemy has died
+        if (spawner != null)
+        {
+            spawner.OnEnemyDeath();
+        }
+
         base.Die();
 
         if (stateMachine != null)
@@ -29,8 +36,9 @@ public class EnemyHealth : HealthBase
             stateMachine.SwitchState(stateMachine.deathState);
         }
 
-        Destroy(gameObject);
- 
+        // Disable the GameObject
+        gameObject.SetActive(false);
+
         Debug.Log("Enemy is dead. Destroying...");
 
     }
