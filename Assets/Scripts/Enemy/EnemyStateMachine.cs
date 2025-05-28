@@ -8,8 +8,16 @@ public class EnemyStateMachine : MonoBehaviour
     [Header("Core Components")]
     public EnemyMovement movement;
     public EnemyFOVTrigger fovTrigger;
+    public EnemyHealth enemyHealth;
 
+    // Current active state
     private EnemyBaseState currentState;
+
+    [HideInInspector] public EnemyBaseState idleState;
+    [HideInInspector] public EnemyBaseState patrolState;
+    [HideInInspector] public EnemyBaseState chaseState;
+    [HideInInspector] public EnemyBaseState deathState;
+
 
     void Start()
     {
@@ -21,11 +29,21 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (fovTrigger == null)
         {
-            fovTrigger = GetComponent<EnemyFOVTrigger>();
+            fovTrigger = GetComponentInChildren<EnemyFOVTrigger>();
         }
 
+        fovTrigger = GetComponentInChildren<EnemyFOVTrigger>();
+
+        // Create instances of states
+        idleState = new IdleState();
+        patrolState = new PatrolState();
+        chaseState = new ChaseState();
+        deathState = new DeathState();
+
+        enemyHealth = GetComponent<EnemyHealth>();
+
         // Start in idle state
-        currentState = gameObject.AddComponent<PatrolState>();
+        currentState = idleState;
         currentState.EnterState(this);
     }
 

@@ -28,8 +28,11 @@ public class IdleState : EnemyBaseState
         // Detect if player is spotted by enemy
         if (stateMachine.fovTrigger.playerSpotted)
         {
+
             if (!isAlerted)
             {
+                Debug.Log("Player spotted — switching to ChaseState");
+
                 isAlerted = true;
                 alertTimer = 0f;
 
@@ -43,11 +46,13 @@ public class IdleState : EnemyBaseState
 
                 if (alertTimer >= alertDuration)
                 {
-                    stateMachine.SwitchState(gameObject.AddComponent<ChaseState>());
+                    Debug.Log("Player confirmed. Switching to ChaseState.");
+                    stateMachine.SwitchState(stateMachine.chaseState);
                     return;
                 }
             }
         }
+
         // Player lost before alert finished — cancel alert
         else if (isAlerted)
         {
@@ -60,9 +65,10 @@ public class IdleState : EnemyBaseState
         if (!isAlerted)
         {
             timer += Time.deltaTime;
+
             if (timer >= idleTime)
             {
-                stateMachine.SwitchState(gameObject.AddComponent<PatrolState>());
+                stateMachine.SwitchState(stateMachine.patrolState);
             }
         }
     }

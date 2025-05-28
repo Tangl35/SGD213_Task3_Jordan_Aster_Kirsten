@@ -6,8 +6,7 @@ public class EnemyFOVTrigger : MonoBehaviour
 {
     public Transform player;
     public EnemyStateMachine stateMachine;
-    public float viewAngle = 120f;
-    public LayerMask obstacleMask;
+    public float viewAngle = 360f;
 
     public bool playerSpotted;
 
@@ -16,7 +15,7 @@ public class EnemyFOVTrigger : MonoBehaviour
     // When player enters collider
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
         }
@@ -25,7 +24,7 @@ public class EnemyFOVTrigger : MonoBehaviour
     // When player exits collider
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
         }
@@ -34,19 +33,29 @@ public class EnemyFOVTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Player is spotted, returns playerSpotted as true.
+        // If Player is in trigger range, check visibility.
         if (isPlayerInRange)
         {
-            Vector3 direction = player.position - transform.position + Vector3.up;
-            Ray ray = new Ray(transform.position, direction);
-            RaycastHit raycastHit;
+            Vector3 origin = transform.position + Vector3.up * 1.5f; // Raise origin to avoid self-hit
+            Vector3 directionToPlayer = (player.position - origin).normalized;
 
-            if (Physics.Raycast(ray, out raycastHit, ~obstacleMask))
+            // Calculate angle between enemy's forward direction and direction of player
+            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+
+            // If Player within field of view
+            if (angleToPlayer < viewAngle / 2f)
             {
-                if (raycastHit.collider.transform == player)
+                // Optional: limit distance, or use Mathf.Infinity
+                if (Physics.Raycast(origin, directionToPlayer, out RaycastHit hit, Mathf.Infinity))
                 {
-                    playerSpotted = true;
-                    return;
+                    Debug.DrawRay(origin, directionToPlayer * 20f, Color.red);
+
+                    // If ray hits player, mark as spotted
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        playerSpotted = true;
+                        return; // Early return to avoid setting false later
+                    }
                 }
             }
         }

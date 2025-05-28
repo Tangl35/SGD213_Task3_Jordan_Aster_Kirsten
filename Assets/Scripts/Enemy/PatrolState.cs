@@ -24,8 +24,12 @@ public class PatrolState : EnemyBaseState
     // Checks to see if player has been spotted.
     public override void UpdateState(EnemyStateMachine stateMachine)
     {
+
         if (stateMachine.fovTrigger.playerSpotted)
         {
+
+            /*Debug.Log("Player spotted — switching to ChaseState");
+
             if (!isAlerted)
             {
                 isAlerted = true;
@@ -38,9 +42,11 @@ public class PatrolState : EnemyBaseState
             else
             {
                 alertTimer += Time.deltaTime;
+
                 if (alertTimer >= alertDuration)
                 {
-                    stateMachine.SwitchState(gameObject.AddComponent<ChaseState>());
+                    Debug.Log("Player confirmed. Switching to ChaseState.");
+                    stateMachine.SwitchState(stateMachine.chaseState);
                 }
             }
 
@@ -52,7 +58,19 @@ public class PatrolState : EnemyBaseState
         if (!isAlerted && stateMachine.movement.ReachedDestination())
         {
             stateMachine.movement.GoToNextPatrolPoint();
-            stateMachine.SwitchState(gameObject.AddComponent<IdleState>()); // brief pause before next patrol
+            stateMachine.SwitchState(stateMachine.idleState); // brief pause before next patrol
+        }*/
+
+            // Chase straight away - test.
+            Debug.Log("Spotted player! Switching to chase immediately.");
+            stateMachine.SwitchState(stateMachine.chaseState);
+            return;
+        }
+
+        if (stateMachine.movement.ReachedDestination())
+        {
+            stateMachine.movement.GoToNextPatrolPoint();
+            stateMachine.SwitchState(stateMachine.idleState);
         }
     }
 

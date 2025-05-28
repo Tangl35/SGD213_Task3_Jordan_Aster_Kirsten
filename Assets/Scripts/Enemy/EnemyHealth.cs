@@ -2,17 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : HealthBase
 {
-    // Start is called before the first frame update
-    void Start()
+    private EnemyStateMachine stateMachine;
+
+    protected override void Start()
     {
-        
+        base.Start();
+        stateMachine = GetComponent<EnemyStateMachine>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetHealth()
     {
-        
+        currentHealth = maxHealth;
+        isDead = false;
+
+        Debug.Log("Enemy health reset.");
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        if (stateMachine != null)
+        {
+            stateMachine.SwitchState(stateMachine.deathState);
+        }
+
+        Destroy(gameObject);
+ 
+        Debug.Log("Enemy is dead. Destroying...");
+
     }
 }
