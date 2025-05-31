@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Diagnostics; // For debugging purposes
 
 
-public class WeaponSemiauto : WeaponBase
+public class WeaponSemiauto : MonoBehaviour
 {
 	public GameObject bulletPrefab; // Prefab for the bullet
 	public Transform firePoint; // Point from which the bullet will be fired

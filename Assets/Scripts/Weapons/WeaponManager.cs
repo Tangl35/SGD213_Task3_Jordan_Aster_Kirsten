@@ -57,8 +57,8 @@ public void currentweapon(int weaponID)
     }
  
     public int secondaryWeaponID = 1; // Variable to hold the current secondary weapon ID
-    public int secondaryWeaponAmmoCount = 20;
-    public int secondaryWeaponAmmoLimit = 50;
+    public int secondaryWeaponAmmoCount = 12;
+    public int secondaryWeaponAmmoLimit = 36;
 
 
     // When player collides with secondary weapon ammo pickup, secondary weapon ammo is increased.
