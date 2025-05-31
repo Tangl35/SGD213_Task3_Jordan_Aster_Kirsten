@@ -16,10 +16,10 @@ public class WeaponManager : MonoBehaviour
         Debug.Log("Grenades added: " + amount);
     }
 }
-   
+
     // Method to throw a grenade
 public void ThrowGrenade()
-    { 
+{
     if (grenadeCount > 0)
     {
         grenadeCount--;
@@ -41,21 +41,21 @@ public void currentweapon(int weaponID)
         Debug.Log("Switched to weapon ID: " + currentweapon);
 
         return currentweapon; // Returns the current weapon ID
-}
+    }
 
 
         // Primary and secondary weapon management
     public int primaryWeaponID = 0; // Variable to hold the current primary weapon ID
     public int primaryWeaponAmmoCount = 30;
     public int primaryWeaponAmmoLimit = 100;
-// When player collides with primary weapon ammo pickup, primary weapon ammo is increased.
-   
-public void ReloadPrimaryWeapon(int ammoAmount)
-{
+        // When player collides with primary weapon ammo pickup, primary weapon ammo is increased.
+      
+    public void ReloadPrimaryWeapon(int ammoAmount)
+    {
         primaryWeaponAmmoCount = Mathf.Min(primaryWeaponAmmoCount + ammoAmount, primaryWeaponAmmoLimit); // ensures player cannot have infinite ammo
-    Debug.Log("Primary Weapon Ammo added: " + ammoAmount);
-}
-
+        Debug.Log("Primary Weapon Ammo added: " + ammoAmount);
+    }
+ 
     public int secondaryWeaponID = 1; // Variable to hold the current secondary weapon ID
     public int secondaryWeaponAmmoCount = 20;
     public int secondaryWeaponAmmoLimit = 50;

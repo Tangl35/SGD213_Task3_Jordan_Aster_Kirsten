@@ -27,33 +27,34 @@ public class WeaponBase : MonoBehaviour
     
      // when player picks up a weapon
     public void weaponid(int id)
-    {
-    weaponid = id;
-    Debug.Log("Weapon ID set to: " + weaponID);
+    { 
+        weaponid = id;
+        Debug.Log("Weapon ID set to: " + weaponID);
 
     }
-    // when player picks up a weapon, this sets the weapon name
+        // when player picks up a weapon, this sets the weapon name
     public void weaponname(string name)
     {
-    weaponname = name;
-       Debug.Log("Weapon Name set to: " + weaponName);
+        weaponname = name;
+        Debug.Log("Weapon Name set to: " + weaponName);
     }
 
     // when player picks up a weapon, this sets the fire rate
     public void fireRate(float rate)
     {
-    fireRate = rate;
-    Debug.Log("Fire Rate set to: " + fireRate);
+        fireRate = rate;
+        Debug.Log("Fire Rate set to: " + fireRate);
     }
     // when player picks up a weapon, this sets the damage
     public void damage(float dmg)
     {
-    damage = dmg;
-    Debug.Log("Damage set to: " + damage);
+        damage = dmg;
+        Debug.Log("Damage set to: " + damage);
     }
     // when player picks up a weapon, this sets the range
     public void range(float rng)
     {
-    range = rng;
-    Debug.Log("Range set to: " + range);
-}
+        range = rng;
+        Debug.Log("Range set to: " + range);
+    }
+  
