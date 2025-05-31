@@ -17,36 +17,54 @@ public class WeaponManager : MonoBehaviour
     }
 }
    
-public void switchweapon(int weaponID)
+    // Method to throw a grenade
+public void ThrowGrenade()
     { 
-        switchweapon = weaponID; // Sets the current weapon to the specified weapon ID
-        Debug.Log("Switched to weapon ID: " + switchweapon);
+    if (grenadeCount > 0)
+    {
+        grenadeCount--;
+        Debug.Log("Thrown a grenade. Remaining grenades: " + grenadeCount);
+        // Adds logic to handle grenade throwing
+    }
+    else
+    {
+        Debug.LogWarning("No grenades left to throw!");
+    }
+}
 
-return switchweapon; // Returns the current weapon ID
+
+
+
+public void currentweapon(int weaponID)
+    {
+        currentweapon = weaponID; // Sets the current weapon to the specified weapon ID
+        Debug.Log("Switched to weapon ID: " + currentweapon);
+
+        return currentweapon; // Returns the current weapon ID
 }
 
 
         // Primary and secondary weapon management
-    public int primaryweapon = 0; // Variable to hold the current primary weapon ID
-    public int primaryWeaponAmmo = 30;
-    public int maxPrimaryWeaponAmmo = 100;
+    public int primaryWeaponID = 0; // Variable to hold the current primary weapon ID
+    public int primaryWeaponAmmoCount = 30;
+    public int primaryWeaponAmmoLimit = 100;
 // When player collides with primary weapon ammo pickup, primary weapon ammo is increased.
    
 public void ReloadPrimaryWeapon(int ammoAmount)
 {
-    primaryWeaponAmmo = Mathf.Min(primaryWeaponAmmo + ammoAmount, maxPrimaryWeaponAmmo); // ensures player cannot have infinite ammo
+        primaryWeaponAmmoCount = Mathf.Min(primaryWeaponAmmoCount + ammoAmount, primaryWeaponAmmoLimit); // ensures player cannot have infinite ammo
     Debug.Log("Primary Weapon Ammo added: " + ammoAmount);
 }
 
-    public int secondaryweapon = 1; // Variable to hold the current secondary weapon ID
-    public int secondaryWeaponAmmo = 20;
-    public int maxSecondaryWeaponAmmo = 50;
+    public int secondaryWeaponID = 1; // Variable to hold the current secondary weapon ID
+    public int secondaryWeaponAmmoCount = 20;
+    public int secondaryWeaponAmmoLimit = 50;
 
 
     // When player collides with secondary weapon ammo pickup, secondary weapon ammo is increased.
     public void ReloadSecondaryWeapon(int ammoAmount)
     {
-        secondaryWeaponAmmo = Mathf.Min(secondaryWeaponAmmo + ammoAmount, maxSecondaryWeaponAmmo); // ensures player cannot have infinite ammo
+        secondaryWeaponAmmoCount = Mathf.Min(secondaryWeaponAmmo + ammoAmount, secondaryWeaponAmmoLimit); // ensures player cannot have infinite ammo
         Debug.Log("Secondary Weapon Ammo added: " + ammoAmount);
     }
 

@@ -23,7 +23,9 @@ public class WeaponBase : MonoBehaviour
     }
 
 }
-    { // when player picks up a weapon
+
+    
+     // when player picks up a weapon
     public void weaponid(int id)
     {
     weaponid = id;
