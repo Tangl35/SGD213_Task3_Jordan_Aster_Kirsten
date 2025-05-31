@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed; 
     public Transform Orientation;
 
+    public float Drag;
+
     float VerticalInput;
     float HorizontalInput;
 
@@ -21,15 +23,21 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
     }
 
+    private void FixedUpdate()
+    {
+        MovePlayer(); 
+    }
     void Update()
     {
         PlayerInput(); 
+        SpeedControl();
+        rb.drag = Drag;
     }
 
     private void PlayerInput()
     {
         HorizontalInput = Input.GetAxisRaw("Horizontal");
-        VerticalInput = Input.GetAxisRaw("Vetrical");
+        VerticalInput = Input.GetAxisRaw("Vertical");
     }
 
     private void MovePlayer()
@@ -39,4 +47,18 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(MoveDirection.normalized * MoveSpeed * 10f, ForceMode.Force); 
     }
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        //velocity limit
+        if (flatVel.magnitude > MoveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * MoveSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+
+    }
+ 
+
 }
