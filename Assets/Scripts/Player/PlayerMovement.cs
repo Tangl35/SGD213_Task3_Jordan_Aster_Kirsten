@@ -27,8 +27,14 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer(); 
     }
+    private void PlayerInput()
+    {
+        HorizontalInput = Input.GetAxisRaw("Horizontal");
+        VerticalInput = Input.GetAxisRaw("Vertical");
+    }
     void Update()
     { 
+        PlayerInput();
         SpeedControl();
         rb.drag = Drag;
     }
