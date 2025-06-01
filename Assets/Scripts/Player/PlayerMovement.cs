@@ -28,16 +28,9 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer(); 
     }
     void Update()
-    {
-        PlayerInput(); 
+    { 
         SpeedControl();
         rb.drag = Drag;
-    }
-
-    private void PlayerInput()
-    {
-        HorizontalInput = Input.GetAxisRaw("Horizontal");
-        VerticalInput = Input.GetAxisRaw("Vertical");
     }
 
     private void MovePlayer()
