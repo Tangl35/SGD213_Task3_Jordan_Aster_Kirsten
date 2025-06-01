@@ -172,9 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca91eb69db7bd740b74cb354be947de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 7
-  Orientation: {fileID: 1723866685}
-  Drag: 5
 --- !u!54 &21386893
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,12 +197,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 21386890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf7c8a6931f7d14689c0e74e8ee6101, type: 3}
+  m_Script: {fileID: 11500000, guid: d8c4943d52f695f488c60f95331be858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  HealthBar: {fileID: 830807538}
 --- !u!1 &47447285
 GameObject:
   m_ObjectHideFlags: 0
