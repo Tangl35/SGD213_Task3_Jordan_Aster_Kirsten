@@ -22,17 +22,14 @@ public class WeaponBase : MonoBehaviour
         Debug.Log("Ammo added: " + ammoAmount);
     }
 
-}
-
-    
-     // when player picks up a weapon
+    // when player picks up a weapon
     public void weaponid(int id)
-    { 
+    {
         weaponid = id;
         Debug.Log("Weapon ID set to: " + weaponID);
 
     }
-        // when player picks up a weapon, this sets the weapon name
+    // when player picks up a weapon, this sets the weapon name
     public void weaponname(string name)
     {
         weaponname = name;
@@ -57,4 +54,5 @@ public class WeaponBase : MonoBehaviour
         range = rng;
         Debug.Log("Range set to: " + range);
     }
-  
+
+}

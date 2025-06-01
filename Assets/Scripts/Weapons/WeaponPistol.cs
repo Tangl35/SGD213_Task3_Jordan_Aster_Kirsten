@@ -1,10 +1,8 @@
 using System.Security.Permissions;
-
-using system collections;
+using system.collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics; // For debugging purposes
-
 
 
 public class WeaponPistol : MonoBehaviour
