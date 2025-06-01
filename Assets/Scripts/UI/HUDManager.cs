@@ -27,7 +27,7 @@ public class HUDManager : MonoBehaviour
     private int currentAmmo = 30; // Default ammo count
     private int maxAmmo = 30;     // Default max ammo
     private int currentGrenades = 3; // Default grenade count
-    private string weaponName = "Pistol"; // Default weapon name
+    private string weaponName = "Assault Rifle"; // Default weapon name
 
     public event Action<int, int> OnHealthChanged; // CurrentHealth, MaxHealth
     // Event for ammo changes (current, max)
