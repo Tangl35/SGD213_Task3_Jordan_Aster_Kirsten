@@ -1,13 +1,12 @@
 using System.Security.Permissions;
-using system.collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Diagnostics; // For debugging purposes
-
+using Debug = UnityEngine.Debug; // For debugging purposes
 
 public class WeaponPistol : MonoBehaviour
 {
-    Gameobject bulletPrefab; // Prefab for the bullet
+    GameObject bulletPrefab; // Prefab for the bullet
     Transform firePoint; // Point from which the bullet will be fired
     private float nextFireTime = 0f; // Time when the weapon can fire again
     public int currentAmmo = 12; // Current ammo count

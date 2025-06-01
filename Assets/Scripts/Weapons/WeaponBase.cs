@@ -11,7 +11,7 @@ public class WeaponBase : MonoBehaviour
     public float damage = 10f; // Damage dealt per shot  
     public float range = 100f; // Maximum range of the weapon  
     public int currentAmmo = 30; // Current ammo count  
-    public int maxAmmo = 100; // Maximum ammo capacity  
+    public readonly int maxAmmo = 100; // Maximum ammo capacity  
 
     // When player collides with Ammo pickup, currentAmmo is increased.  
     public void Reload(int ammoAmount)
@@ -54,5 +54,10 @@ public class WeaponBase : MonoBehaviour
     {
         range = rng;
         Debug.Log("Range set to: " + range);
+    }
+
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo; // Returns the current ammo count  
     }
 }
