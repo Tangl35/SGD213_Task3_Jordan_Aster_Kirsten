@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Debug = UnityEngine.Debug;// For debugging purposes
 using UnityEngine;
 

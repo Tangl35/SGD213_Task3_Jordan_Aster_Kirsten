@@ -1,6 +1,3 @@
-using System.Security.Permissions;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Debug = UnityEngine.Debug; // For debugging purposes
 
