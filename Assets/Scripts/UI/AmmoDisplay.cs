@@ -1,7 +1,6 @@
 using UnityEngine;
 
 
-
 /// This script simulates a weapon's ammo count and interacts with the HUDManager
 /// to update the ammo display on the UI.
 public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
@@ -14,7 +13,7 @@ public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
     public int maxClipAmmo = 30;
 
     [Tooltip("The total reserve ammo available for this weapon.")]
-    public int totalReserveAmmo = 90;
+    public int totalReserveAmmo = 100;
 
     [Tooltip("The name of the weapon to display on the HUD.")]
     public string weaponName = "Assault Rifle";
@@ -25,10 +24,7 @@ public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
     [Tooltip("Key to simulate reloading the weapon.")]
     public KeyCode reloadKey = KeyCode.R;
 
-    /// <summary>
-    /// Start is called before the first frame update.
-    /// Initializes the HUD with the weapon's initial state.
-    /// </summary>
+   
     void Start()
     {
         // Ensure HUDManager instance exists before trying to update it.
@@ -39,15 +35,12 @@ public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
         }
         else
         {
-            Debug.LogError("HUDManager.Instance is null. Please ensure HUDManager is in the scene and set up correctly.", this);
+            Debug.Log("HUDManager.Instance is null. Please ensure HUDManager is in the scene and set up correctly.", this);
             enabled = false; // Disable this script if HUDManager is not found.
         }
     }
 
-    /// <summary>
-    /// Update is called once per frame.
-    /// Handles input for firing and reloading.
-    /// </summary>
+    
     void Update()
     {
         // Simulate firing
@@ -63,9 +56,9 @@ public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
         }
     }
 
-    /// <summary>
+    
     /// Simulates firing the weapon, decreasing ammo.
-    /// </summary>
+    
     public void Fire()
     {
         if (currentClipAmmo > 0)
@@ -81,9 +74,9 @@ public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
         }
     }
 
-    /// <summary>
+    
     /// Simulates reloading the weapon, transferring ammo from reserve to clip.
-    /// </summary>
+   
     public void Reload()
     {
         if (currentClipAmmo < maxClipAmmo && totalReserveAmmo > 0)
@@ -107,9 +100,9 @@ public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
         }
     }
 
-    /// <summary>
+    
     /// Helper method to send the current ammo state to the HUDManager.
-    /// </summary>
+    
     private void UpdateHUDAmmo()
     {
         if (HUDManager.Instance != null)
@@ -118,10 +111,10 @@ public class AmmoDisplay : MonoBehaviour // Renamed from WeaponAmmoController
         }
     }
 
-    /// <summary>
+    
     /// Sets the weapon's name and updates the HUD.
-    /// </summary>
-    /// <param name="newName">The new weapon name.</param>
+   
+    /// name="newName">The new weapon name.</param>
     public void SetWeaponDisplayName(string newName)
     {
         weaponName = newName;
